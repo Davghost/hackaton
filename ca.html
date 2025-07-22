@@ -1,0 +1,20 @@
+{% extends "layout_admin.html" %}
+
+{% block content %}
+<section class="section">
+    <form method="POST" action="/process_form">
+      <div class="block">
+          <label class="label" for="name">Email</label>
+          <input class="input" type="text" id="email" name="email" required />
+      </div>
+      <div class="block">
+          <label class="label" for="name">Senha</label>
+          <input class="input" type="text" id="senha" name="senha" required />
+      </div>
+        <div class="block">
+            <input type="submit" value="Submit" />
+        </div>
+</form>
+</section>
+
+{% endblock %}

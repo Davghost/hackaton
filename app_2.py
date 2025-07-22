@@ -5,18 +5,38 @@ conn = sqlite3.connect('restaurantes.db')
 cursor = conn.cursor()
 
 criacao_de_tabela = """
-    CREATE TABLE IF NOT EXISTS RESTAURANTES (
-        id INTEGER PRIMARY KEY
+    CREATE TABLE IF NOT EXISTS restaurantes (
+        id_restaurante INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        description TEXT
+    """
+
+tabela_filha = """
+    CREATE TABLE IF NOT EXISTS comidas_restaurantes (
+        id INTEGER PRIMARY KEY,
+        restaurante_id INTEGER NOT NULL,
         name TEXT NOT NULL
-"""
+        carne INTEGER NOT NULL
+        ovo INTEGER NOT NULL
+        leite INTEGER NOT NULL
+        gluten INTEGER NOT NULL
+        frutosdomar INTEGER NOT NULL
+        alcool INTEGER NOT NULL
+        amendoim INTEGER NOT NULL
+        soja INTEGER NOT NULL
+        nozesoucastanhas INTEGER NOT NULL
+        acucar INTEGER NOT NULL
+        FOREIGN KEY (restaurante_id) REFERENCES restaurantes (id_restaurante)
+    """
 
 cursor.execute(criacao_de_tabela)
+cursor.execute((tabela_filha))
 
 app = Flask(__name__)
 
 @app.route("/")
 def main_page():
-    return ("<h1> This is the main page. Here you can create or login and then change your restaurants data, as well"
+    return ("<h1> This is the main page. Here you can create or login and then change your restaurant's data, as well"
             "as getting the menu´s link or qr-code<h1>")
 
 @app.route("/pegar_login", methods=['POST'])

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} DIMU - Seu restaurante {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    >
+</head>
+<style>
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: light;
+          background-color: #fff !important;
+          color: #000 !important;
+        }
+      }
+    </style>
+<body class="theme-dark">
+
+    <div class="block">
+        <header class="header has-text-centered">
+            <h1 class="title">DIMU</h1>
+        </header>
+    </div>
+    <div class="block">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="footer">
+
+    </footer>
+
+</body>
+</html>
